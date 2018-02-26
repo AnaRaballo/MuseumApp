@@ -15,25 +15,11 @@ const LocalStrategy = require("passport-local").Strategy;
 const index = require('./routes/index');
 const users = require('./routes/users');
 const authRoutes = require("./routes/auth-routes");
-
-//Artsy API Configuration
-// const request = require('superagent');
-
-// var clientID = '001dade1ef119ee63961',
-//     clientSecret = '66c498c383588022c44d3182c494ae36',
-//     apiUrl = 'https://api.artsy.net/api/tokens/xapp_token',
-//     xappToken;
-
-//     request
-//     .post(apiUrl)
-//     .send({ client_id: clientID, client_secret: clientSecret })
-//     .end(function(res) {
-//       xappToken = res.body.token; 
-//     });
+    
 
 //Mongoose configuration
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost/museum-local");
+mongoose.connect("mongodb://localhost/artwork-local");
 
 const app = express();
 

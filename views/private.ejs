@@ -1,0 +1,21 @@
+<!-- views/auth/private.ejs -->
+<form action="/private" method="POST">
+    <div>
+      <label for="name">Artwork Name:</label>
+      <input type="text" name="name">
+    </div>
+    <div>
+      <label for="size">Artwork Size:</label>
+      <input type="text" name="size">
+    </div>
+    <div>
+        <label for="technique">Artwork Technique:</label>
+        <input type="text" name="technique">
+      </div>
+    <% if (typeof message != "undefined") { %>
+        <div class="error-message"><%= message %></div>
+      <% } %>
+    <div>
+      <input type="submit" value="Submit">
+    </div>
+</form>

@@ -5,6 +5,7 @@ const passport = require("passport");
 
 // User model
 const User = require("../models/user");
+const Art = require("../models/artwork")
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -62,6 +63,29 @@ authRoutes.get("/login", (req, res, next) => {
 
   authRoutes.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
     res.render("private", { user: req.user });
+  });
+
+  function ensureAuthenticated(req, res, next) {
+      if (req.isAuthenticated()){
+          return next();
+      } else {
+          res.redirect('/login')
+      }
+  }
+
+  authRoutes.post('/private', ensureAuthenticated, (req, res, next) =>{
+      const newArt = new Art ({
+          name: req.body.name,
+          size: req.body.size,
+          technique: req.body.technique,
+          owner: req.user._id
+      })
+      newArt.save ((err) => {
+          if (err) {return next(err);}
+          else {
+              res.redirect('/private');
+          }
+      })
   });
 
   authRoutes.get("/logout", (req, res) => {
