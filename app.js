@@ -42,6 +42,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Default Routes
 app.use('/', index);
 app.use('/users', users);
+app.use('/artwork', artwork);
 
 //Middleware
 app.use(session({

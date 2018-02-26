@@ -89,6 +89,7 @@ authRoutes.get("/login", (req, res, next) => {
   });
 
 
+
   authRoutes.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/login");
